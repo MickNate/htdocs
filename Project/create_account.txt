@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      
+   </head>
+   <body>
+      <h1>Employee Duty and Review Website</h1>
+      <p>Please confirm if you are an employee or an employer.</p>
+   </body>
+</html>
