@@ -42,6 +42,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $_SESSION["user_id"] = $result["id"];
         $_SESSION["user_username"] = htmlspecialchars($result["username"]);
+        $_SESSION["user_firstname"] = htmlspecialchars($result["firstname"]);
         $_SESSION["last_regeneration"] = time();
 
         //header("Location: ../login.php?login=success");
