@@ -45,9 +45,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["user_firstname"] = htmlspecialchars($result["firstname"]);
         $_SESSION["last_regeneration"] = time();
 
-        //header("Location: ../login.php?login=success");
         $pdo = null;
         $statement = null;
+
+        $_SESSION["logged_in"] = true;
 
         header("Location: ../main.php");
 
