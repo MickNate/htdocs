@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $pdo = null;
     $stmt = null;
 
-    header("Location: ../main.php");
+    header("Location: ../main.php?creation=success");
 
     die();
     } catch (PDOException $e) {

@@ -42,7 +42,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $_SESSION["user_id"] = $result["id"];
         $_SESSION["user_username"] = htmlspecialchars($result["username"]);
+        $_SESSION["user_password"] = htmlspecialchars($result["password"]);
         $_SESSION["user_firstname"] = htmlspecialchars($result["firstname"]);
+        $_SESSION["user_lastname"] = htmlspecialchars($result["lastname"]);
+        $_SESSION["user_created_at"] = htmlspecialchars($result["created_at"]);
+        $_SESSION["user_userJob"] = htmlspecialchars($result["userJob"]);
         $_SESSION["last_regeneration"] = time();
 
         $pdo = null;
