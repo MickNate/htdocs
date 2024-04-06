@@ -8,7 +8,6 @@ if($_SERVER["REQUEST_METHOD"] === "GET"){
     $userSearch = $_POST["userSearch"];
 
     try {
-        require_once "includes/dbh.inc.php";
 
         $query = "SELECT * FROM users WHERE firstname = :userSearch OR WHERE lastname = :userSearch;";
 

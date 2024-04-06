@@ -41,18 +41,13 @@ else{
 
         if(empty($results)){
             echo "<div>";
-            echo "<p>No results</p>";
+            echo "<p>No comments yet</p>";
             echo "</div>";
         }
         else{
             foreach($results as $row){
                 echo "<a href='guestView.php?ID={$row['id']}'>{$row['firstname']} {$row['lastname']}</a>";
-                
-                //{htmlspecialchars($row['firstname']) . ' ' . htmlspecialchars($row['lastname'])}
-                //htmlspecialchars($row["userJob"]);
-               // echo htmlspecialchars($row["lastname"]);
                 echo "</br>";
-              //  echo htmlspecialchars($row["userJob"]);
             }
         }
 
