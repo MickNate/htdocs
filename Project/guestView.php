@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+    <head>
+        <title>
+            <?php
+                echo "Profile of {$result["firstname"]} {$result["lastname"]}";
+            ?>
+        </title>
+    </head>
+    <body>
+        <form action="main.php" method="post">
+        <button>Return to Home</button>
+        </form>
+        <br>
+        <form action="profile.php" method="post">
+            <button>View Profile</button>
+        </form>
+        <br>
+        <br>
+
+        <form action="includes/logout.inc.php" method="post">
+            <button>Logout</button>
+        </form>
+
 <?php
 
     require "includes/dbh.inc.php";
@@ -21,18 +44,7 @@
         header("Location: ../main.php");
     }
 
-?>
-
-<!DOCTYPE html>
-    <head>
-        <title>
-            <?php
-                echo "Profile of {$result["firstname"]} {$result["lastname"]}";
-            ?>
-        </title>
-    </head>
-
-    <body>
+?>    
         <h1>
             Profile View <?php $result ?>
         </h1>
@@ -55,8 +67,6 @@
             <button>Comment</button>
             <input type="hidden" name="original_poster" value=<?php echo $ID ?> />
         </form>
-    </body>
-</html>
 
 <?php
 
@@ -90,7 +100,17 @@
         }
         else{
             foreach($results as $row){
-                echo "{$row['commenter']}";
+
+                require "includes/dbh.inc.php";
+                $query = "SELECT * FROM users WHERE id = :commenter;";
+                $stmt = $pdo->prepare($query);
+                $stmt->bindParam(":commenter", $row["commenter"]);
+                $stmt->execute();
+
+                $resCom = $stmt->fetch(PDO::FETCH_ASSOC);
+                //return $resCom;
+
+                echo "{$resCom['firstname']} {$resCom['lastname']}";
                 echo "<br>";
                 echo "{$row['comment']}";
                 echo "<br>";
@@ -100,4 +120,6 @@
             }
         }
 
-?>
+    ?>
+    </body>
+</html>

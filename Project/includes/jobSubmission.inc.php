@@ -7,6 +7,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     try {
     $userJob = $_POST["userJob"];
     $username=$_SESSION["user_username"];
+    $_SESSION["user_userJob"] = $_POST["userJob"];
 
     $query = "UPDATE users SET userJob =  :userJob WHERE username = :username;";
 
@@ -19,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $pdo = null;
     $stmt = null;
 
-    header("Location: ../main.php?creation=success");
+    header("Location: ../profile.php");
 
     die();
     } catch (PDOException $e) {

@@ -35,7 +35,26 @@ else{
     </head>
     <body>
 
+        <form action="main.php" method="post">
+            <button>Return to Home</button>
+        </form>
+        <br>
+       <form action="profile.php" method="post">
+            <button>View Profile</button>
+        </form>
+        <br>
+        <br>
+
+        <form action="includes/logout.inc.php" method="post">
+            <button>Logout</button>
+        </form>
         <h3>Search results:</h3>
+
+        <form class="searchform" action="searchPage.php" method="POST">
+            <label for="search">User Search:</label>
+            <input id="search" type="text" name="usersearch" placeholder="Please type someone's name">
+            <button>Search</button>
+        </form>
 
         <?php
 

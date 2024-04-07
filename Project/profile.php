@@ -2,7 +2,7 @@
 require_once "includes/config_session.inc.php";
 require_once "includes/dbh.inc.php";
 
-if($_SERVER["REQUEST_METHOD"] === "POST") {
+if($_SERVER["REQUEST_METHOD"] === "POST" or "GET") {
     try {
 
     }
@@ -10,7 +10,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Query failed: " . $e->getMessage());
     }
 }
-
 else{
     header("Location: ../main.php");
     die();
@@ -22,6 +21,16 @@ else{
 
     </head>
     <body>
+
+        <form action="main.php" method="post">
+            <button>Return to Home</button>
+        </form>
+        <br>
+        <br>
+
+        <form action="includes/logout.inc.php" method="post">
+            <button>Logout</button>
+        </form>
 
         <?php
             echo "Username: " . $_SESSION["user_username"];
