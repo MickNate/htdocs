@@ -13,6 +13,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="styles.css">
         <title>
             Welcome to Employee Review!
         </title>    

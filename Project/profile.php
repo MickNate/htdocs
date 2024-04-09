@@ -44,6 +44,56 @@ else{
             echo "Job Description: ";
             echo $_SESSION["user_userJob"];
             echo "<br>";;
+
+            try {
+
+                require "includes/dbh.inc.php";
+        
+                $query = "SELECT * FROM comments WHERE original_poster = :original_poster;";
+        
+                $stmt = $pdo->prepare($query);
+        
+                $stmt->bindParam(":original_poster", $_SESSION["user_id"]);
+                
+                $stmt->execute();
+        
+                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+                $pdo = null;
+        
+                $stmt = null;
+        
+                } catch (PDOException $e) {
+                    die("Query failed: " . $e->getMessage());
+                }
+        
+                if(empty($results)){
+                    echo "<div>";
+                    echo "<p>No comments yet</p>";
+                    echo "</div>";
+                }
+                else{
+                    foreach($results as $row){
+        
+                        require "includes/dbh.inc.php";
+                        $query = "SELECT * FROM users WHERE id = :commenter;";
+                        $stmt = $pdo->prepare($query);
+                        $stmt->bindParam(":commenter", $row["commenter"]);
+                        $stmt->execute();
+        
+                        $resCom = $stmt->fetch(PDO::FETCH_ASSOC);
+                        //return $resCom;
+        
+                        echo "<br>";
+                        echo "{$resCom['firstname']} {$resCom['lastname']}";
+                        echo "<br>";
+                        echo "{$row['comment']}";
+                        echo "<br>";
+                        echo "{$row['commented_at']}";
+                        echo "<br>";
+                        echo "<br>";
+                    }
+                }
         ?>
     </body>
 </html>
