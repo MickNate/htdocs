@@ -31,7 +31,7 @@ else{
 
 <!DOCTYPE html>
     <head>
-
+        <title>Search Results</title>
     </head>
     <body>
 
@@ -60,7 +60,7 @@ else{
 
         if(empty($results)){
             echo "<div>";
-            echo "<p>No comments yet</p>";
+            echo "<p>No user with that name. Double check your spelling and try just looking up one of their names at a time.</p>";
             echo "</div>";
         }
         else{

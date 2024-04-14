@@ -2,6 +2,26 @@
     <head>
         <title>
             <?php
+                require "includes/dbh.inc.php";
+
+                if(isset($_GET['ID'])){
+            
+                //    require "includes/dbh.inc.php";
+            
+                    $ID = $_GET['ID'];
+                    
+                    $query = "SELECT * FROM users WHERE id = :id;";
+                    $stmt = $pdo->prepare($query);
+                    $stmt->bindParam(":id", $ID);
+                    $stmt->execute();
+                    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+                    $pdo = null;
+                    $stmt = null;
+                }
+                else{
+                    header("Location: ../main.php");
+                }
                 echo "Profile of {$result["firstname"]} {$result["lastname"]}";
             ?>
         </title>
@@ -21,30 +41,7 @@
             <button>Logout</button>
         </form>
 
-<?php
-
-    require "includes/dbh.inc.php";
-
-    if(isset($_GET['ID'])){
-
-    //    require "includes/dbh.inc.php";
-
-        $ID = $_GET['ID'];
-        
-        $query = "SELECT * FROM users WHERE id = :id;";
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam(":id", $ID);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        $pdo = null;
-        $stmt = null;
-    }
-    else{
-        header("Location: ../main.php");
-    }
-
-?>    
+ 
         <h1>
             Profile View <?php $result ?>
         </h1>

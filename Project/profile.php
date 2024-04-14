@@ -18,7 +18,11 @@ else{
 
 <!DOCTYPE html>
     <head>
-
+        <title>
+            <?php
+                echo $_SESSION["user_firstname"] . " " . $_SESSION["user_lastname"] . "'s Profile";
+            ?>
+        </title>
     </head>
     <body>
 
